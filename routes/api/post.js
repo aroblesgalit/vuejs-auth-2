@@ -8,6 +8,9 @@ router
   .post(postsController.createPost)
 
 // Matches with '/api/posts/:id'
-router.route('/:id').get(postsController.fetchPostById)
+router
+  .route('/:id')
+  .get(postsController.fetchPostById)
+  .delete(postsController.deletePost)
 
 module.exports = router
