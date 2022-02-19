@@ -11,6 +11,7 @@ router
 router
   .route('/:id')
   .get(postsController.fetchPostById)
+  .put(postsController.updatePost)
   .delete(postsController.deletePost)
 
 module.exports = router
