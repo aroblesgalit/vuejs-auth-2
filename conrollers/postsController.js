@@ -15,5 +15,10 @@ module.exports = {
     db.Post.findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
+  },
+  deletePost: function (req, res) {
+    db.Post.deleteOne({ _id: req.params.id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
   }
 }
