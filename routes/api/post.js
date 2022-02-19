@@ -1,13 +1,10 @@
 const router = require('express').Router()
+const postsController = require('../../conrollers/postsController')
 
 // Matches with '/api/posts'
 router
   .route('/')
-  .get((req, res) => {
-    res.send('We are on posts')
-  })
-  .post((req, res) => {
-    console.log(req.body)
-  })
+  .get(postsController.fetchPosts)
+  .post(postsController.createPost)
 
 module.exports = router
