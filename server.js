@@ -5,6 +5,8 @@ const routes = require('./routes')
 
 require('dotenv').config()
 
+app.use(express.json())
+
 const PORT = process.env.PORT || 3000
 
 // Routes
