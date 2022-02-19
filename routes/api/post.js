@@ -7,4 +7,7 @@ router
   .get(postsController.fetchPosts)
   .post(postsController.createPost)
 
+// Matches with '/api/posts/:id'
+router.route('/:id').get(postsController.fetchPostById)
+
 module.exports = router
