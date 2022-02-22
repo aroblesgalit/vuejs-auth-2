@@ -5,12 +5,24 @@ const routes = require('./routes')
 const cors = require('cors')
 require('dotenv').config()
 const session = require('express-session')
+const passport = require('./config/passport')
 
 const PORT = process.env.PORT || 3000
 
 // Middlewares
 app.use(express.json())
 app.use(cors())
+
+// Use sessions to keep track of user's login status
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true
+  })
+)
+app.use(passport.initialize())
+app.use(passport.session)
 
 // Routes
 app.use(routes)
