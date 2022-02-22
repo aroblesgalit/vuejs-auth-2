@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const routes = require('./routes')
 const cors = require('cors')
 require('dotenv').config()
+const session = require('express-session')
 
 const PORT = process.env.PORT || 3000
 
