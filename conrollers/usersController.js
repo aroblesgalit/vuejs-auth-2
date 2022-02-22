@@ -12,16 +12,16 @@ module.exports = {
         username: req.body.username,
         password: hash
       })
-
+      res.json(newUser)
       // Redirect to login page
-      res.redirect(307, '/')
+      // res.redirect(307, '/')
     } catch (err) {
       res.status(401).json(err)
     }
   },
   loginUser: function (req, res) {
     res.json(req.user)
-    res.redirect('/')
+    // res.redirect('/')
   },
   logoutUser: function (req, res) {
     req.logout()
