@@ -22,5 +22,11 @@ module.exports = {
   loginUser: function (req, res) {
     res.json(req.user)
     res.redirect('/')
+  },
+  logoutUser: function (req, res) {
+    req.logout()
+    req.session.destroy(function (err) {
+      res.json({})
+    })
   }
 }
