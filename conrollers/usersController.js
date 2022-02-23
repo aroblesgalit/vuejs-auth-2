@@ -1,6 +1,4 @@
 const db = require('../models')
-const bcrypt = require('bcrypt')
-const saltRounds = 10
 
 module.exports = {
   registerUser: async function (req, res) {
