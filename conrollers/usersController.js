@@ -6,9 +6,9 @@ module.exports = {
   registerUser: async function (req, res) {
     db.User.create({
       username: req.body.username,
-      password: hash
+      password: req.body.password
     })
-      .then(dbUser => res.redirect(307, '/api/user/login'))
+      .then(() => res.redirect(307, '/api/user/login'))
       .catch(err => res.status(401).json(err))
   },
   loginUser: function (req, res) {
