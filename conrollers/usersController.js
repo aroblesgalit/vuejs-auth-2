@@ -4,20 +4,12 @@ const saltRounds = 10
 
 module.exports = {
   registerUser: async function (req, res) {
-    try {
-      const salt = await bcrypt.genSalt(saltRounds)
-      const hash = await bcrypt.hash(req.body.password, salt)
-
-      const newUser = await db.User.create({
-        username: req.body.username,
-        password: hash
-      })
-      res.json(newUser)
-      // Redirect to login page
-      // res.redirect(307, '/')
-    } catch (err) {
-      res.status(401).json(err)
-    }
+    db.User.create({
+      username: req.body.username,
+      password: hash
+    })
+      .then(dbUser => res.redirect(307, '/api/user/login'))
+      .catch(err => res.status(401).json(err))
   },
   loginUser: function (req, res) {
     res.json(req.user)
