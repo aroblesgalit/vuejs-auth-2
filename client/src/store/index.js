@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import axios from 'axios'
 
 export default createStore({
   state: {
@@ -10,7 +11,7 @@ export default createStore({
   actions: {
     async registerUser ({ commit }, data) {
       const response = await axios.post(
-        'http://localhost:8080/api/user/register',
+        'http://localhost:3000/api/user/register',
         data
       )
 
