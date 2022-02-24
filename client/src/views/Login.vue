@@ -1,6 +1,6 @@
 <template>
   <form>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">Please log in</h1>
 
     <input type="text" class="form-control" placeholder="username" required />
     <input
