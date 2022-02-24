@@ -1,15 +1,15 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Home</a>
+      <router-link class="navbar-brand" to="/">Home</router-link>
 
       <div>
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <router-link class="nav-link" to="/login">Login</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <router-link class="nav-link" to="/register">Register</router-link>
           </li>
         </ul>
       </div>
