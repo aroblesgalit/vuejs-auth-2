@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <div>
     <h1 class="h3 mb-3 fw-normal">Please register</h1>
     <form @submit.prevent="formSubmit">
       <input
@@ -30,7 +30,7 @@
         value="Register"
       />
     </form>
-  </form>
+  </div>
 </template>
 
 <script>
