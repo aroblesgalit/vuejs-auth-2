@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export default createStore({
   state: {
-    user: {},
+    user: null,
     isLoggedIn: false,
     registration: null
   },
