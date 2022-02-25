@@ -1,7 +1,7 @@
 <template>
   <form>
     <h1 class="h3 mb-3 fw-normal">Please register</h1>
-    <form @submit="onSubmit">
+    <form @submit.prevent="formSubmit">
       <input
         v-model="username"
         type="text"
@@ -17,7 +17,7 @@
         required
       />
       <input
-        v-model="confirmPassword"
+        v-model="confirm"
         type="password"
         class="form-control"
         placeholder="confirm password"
@@ -41,20 +41,26 @@ export default {
     return {
       username: '',
       password: '',
-      confirmPassword: ''
+      confirm: ''
     }
   },
   methods: {
     ...mapActions(['registerUser']),
-    onSubmit (e) {
-      e.preventDefault()
+    async formSubmit () {
+      try {
+        if (this.password !== this.confirm) {
+          return alert('Please confirm password matches.')
+        }
 
-      if (this.password !== this.confirmPassword) return
+        await this.registerUser({
+          username: this.username,
+          password: this.password
+        })
 
-      this.registerUser({
-        username: this.username,
-        password: this.password
-      })
+        await this.$router.push({ name: 'Login' })
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 }

@@ -6,7 +6,7 @@ export default createStore({
     user: {}
   },
   mutations: {
-    newUser: (state, user) => (state.user = user)
+    SET_USER: (state, user) => (state.user = user)
   },
   actions: {
     async registerUser ({ commit }, data) {
@@ -15,7 +15,7 @@ export default createStore({
         data
       )
 
-      commit('newUser', response.data)
+      commit('SET_USER', response.data)
     }
   },
   getters: {
