@@ -59,7 +59,7 @@ export default {
 
         await this.$router.push({ name: 'Login' })
       } catch (err) {
-        console.log(err)
+        console.error(err)
       }
     }
   }

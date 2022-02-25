@@ -1,9 +1,16 @@
 <template>
-  <form>
+  <form @submit.prevent="formSubmit">
     <h1 class="h3 mb-3 fw-normal">Please log in</h1>
 
-    <input type="text" class="form-control" placeholder="username" required />
     <input
+      v-model="username"
+      type="text"
+      class="form-control"
+      placeholder="username"
+      required
+    />
+    <input
+      v-model="password"
       type="password"
       class="form-control"
       placeholder="password"
@@ -17,8 +24,29 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  name: 'Login'
+  name: 'Login',
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    ...mapActions(['loginUser']),
+    async formSubmit () {
+      try {
+        await this.loginUser({
+          username: this.username,
+          password: this.password
+        })
+        await this.$router.push({ name: 'Home' })
+      } catch (err) {
+        console.error(err)
+      }
+    }
+  }
 }
 </script>
 
