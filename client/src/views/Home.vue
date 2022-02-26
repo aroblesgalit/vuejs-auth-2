@@ -6,17 +6,12 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapState } from 'vuex'
+
 export default {
   name: 'Home',
-  methods: {
-    ...mapActions(['fetchUser'])
-  },
   computed: {
     ...mapState(['user'])
-  },
-  created () {
-    this.fetchUser()
   }
 }
 </script>
