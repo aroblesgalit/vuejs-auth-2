@@ -19,7 +19,7 @@ export default createStore({
         commit('SET_REGS', 'success')
       } catch (err) {
         console.error(err)
-        commit('SET_USER', 'fail')
+        commit('SET_REGS', 'fail')
       }
     },
     async loginUser ({ commit }, data) {

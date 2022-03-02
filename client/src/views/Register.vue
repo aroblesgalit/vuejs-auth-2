@@ -58,7 +58,7 @@ export default {
           password: this.password
         })
 
-        await this.$router.push({ name: 'Login' })
+        // await this.$router.push({ name: 'Login' })
       } catch (err) {
         console.error(err)
       }
