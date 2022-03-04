@@ -30,10 +30,11 @@ export default createStore({
         console.error(err)
       }
     },
-    async fetchUser ({ commit }) {
+    async fetchUser () {
       try {
-        const response = await axios.get('http://localhost:3000/api/user')
-        commit('SET_USER', response.data)
+        const response = await axios.get('http://localhost:3000/api/user/auth')
+        console.log(response)
+        // commit('SET_USER', response.data)
       } catch (err) {
         console.error(err)
       }
