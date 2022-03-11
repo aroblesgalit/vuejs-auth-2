@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Home</h1>
-    <p v-if="user">{{ user }}</p>
+    <p v-if="user">{{ user.username }}</p>
   </div>
 </template>
 

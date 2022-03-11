@@ -42,16 +42,16 @@ export default createStore({
       } catch (err) {
         console.error(err)
       }
-    },
-    async fetchUser () {
-      try {
-        const response = await axios.get('http://localhost:3000/api/user/auth')
-        console.log(response)
-        // commit('SET_USER', response.data)
-      } catch (err) {
-        console.error(err)
-      }
     }
+    // async fetchUser () {
+    //   try {
+    //     const response = await axios.get('http://localhost:3000/api/user/auth')
+    //     console.log(response)
+    //     // commit('SET_USER', response.data)
+    //   } catch (err) {
+    //     console.error(err)
+    //   }
+    // }
   },
   getters: {
     getUser: state => state.user,

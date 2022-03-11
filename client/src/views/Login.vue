@@ -24,7 +24,7 @@
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 // import axios from 'axios'
 
 export default {
@@ -36,19 +36,18 @@ export default {
     }
   },
   methods: {
-    // ...mapActions(['loginUser', 'fetchUser']),
-    // async formSubmit () {
-    //   try {
-    //     await this.loginUser({
-    //       username: this.username,
-    //       password: this.password
-    //     })
-    //     await this.fetchUser()
-    //     // await this.$router.push({ name: 'Home' })
-    //   } catch (err) {
-    //     console.error(err)
-    //   }
-    // }
+    ...mapActions(['loginUser', 'fetchUser']),
+    async formSubmit () {
+      try {
+        await this.loginUser({
+          username: this.username,
+          password: this.password
+        })
+        await this.$router.push({ name: 'Home' })
+      } catch (err) {
+        console.error(err)
+      }
+    }
     // async formSubmit () {
     //   try {
     //     const user = await axios.post('http://localhost:3000/api/user/login', {
@@ -62,13 +61,13 @@ export default {
     //     console.error(err)
     //   }
     // }
-    formSubmit () {
-      this.$store.dispatch('loginUser', {
-        username: this.username,
-        password: this.password
-      })
-      // this.$store.dispatch('fetchUser')
-    }
+    // formSubmit () {
+    //   this.$store.dispatch('loginUser', {
+    //     username: this.username,
+    //     password: this.password
+    //   })
+    //   // this.$store.dispatch('fetchUser')
+    // }
   }
 }
 </script>
