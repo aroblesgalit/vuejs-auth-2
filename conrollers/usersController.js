@@ -6,7 +6,7 @@ module.exports = {
       username: req.body.username,
       password: req.body.password
     })
-      .then(() => res.redirect('http://localhost:8080/login'))
+      .then(console.log('Registration successful!'))
       .catch(err => res.status(401).json(err))
   },
   loginUser: function (req, res) {

@@ -30,11 +30,12 @@
         value="Register"
       />
     </form>
+    <p v-show="registration">{{ registration }}</p>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'Register',
@@ -57,12 +58,13 @@ export default {
           username: this.username,
           password: this.password
         })
-
-        // await this.$router.push({ name: 'Login' })
       } catch (err) {
         console.error(err)
       }
     }
+  },
+  computed: {
+    ...mapState(['registration'])
   }
 }
 </script>
