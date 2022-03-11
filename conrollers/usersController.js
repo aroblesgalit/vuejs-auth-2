@@ -6,7 +6,7 @@ module.exports = {
       username: req.body.username,
       password: req.body.password
     })
-      .then(() => res.redirect('http://localhost:8080//login'))
+      .then(() => res.redirect('http://localhost:8080/login'))
       .catch(err => res.status(401).json(err))
   },
   loginUser: function (req, res) {
@@ -14,14 +14,12 @@ module.exports = {
       id: req.user._id,
       username: req.user.username
     })
-    res.redirect('http://localhost:8080/')
   },
   logoutUser: function (req, res) {
     req.logout()
     req.session.destroy(function (err) {
       res.json({})
     })
-    res.redirect('http://localhost:8080//login')
   },
   fetchUser: function (req, res) {
     if (!req.user) {
