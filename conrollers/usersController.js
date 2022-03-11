@@ -10,7 +10,10 @@ module.exports = {
       .catch(err => res.status(401).json(err))
   },
   loginUser: function (req, res) {
-    res.json(req.user)
+    res.json({
+      id: req.user._id,
+      username: req.user.username
+    })
     res.redirect('http://localhost:8080/')
   },
   logoutUser: function (req, res) {
