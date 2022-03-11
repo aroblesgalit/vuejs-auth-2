@@ -1,5 +1,10 @@
 const db = require('../models')
 
+function isLoggedIn (req, res, next) {
+  if (req.isAuthenticated()) return next()
+  res.redirect('http://localhost:8080/login')
+}
+
 module.exports = {
   registerUser: async function (req, res) {
     db.User.create({
