@@ -13,14 +13,28 @@ export default createStore({
     SET_REGS: (state, payload) => (state.registration = payload)
   },
   actions: {
-    async registerUser ({ commit }, data) {
-      try {
-        await axios.post('http://localhost:3000/api/user/register', data)
-        commit('SET_REGS', 'Congratulations! You have successfully registered.')
-      } catch (err) {
-        console.error(err)
-        commit('SET_REGS', 'Registration failed. Please try again later.')
-      }
+    // async registerUser ({ commit }, data) {
+    //   try {
+    //     await axios.post('http://localhost:3000/api/user/register', data)
+    //     commit('SET_REGS', 'Congratulations! You have successfully registered.')
+    //   } catch (err) {
+    //     console.error(err)
+    //     // commit('SET_REGS', 'Registration failed. Please try again later.')
+    //   }
+    // },
+    registerUser ({ commit }, data) {
+      axios
+        .post('http://localhost:3000/api/user/register', data)
+        .then(() =>
+          commit(
+            'SET_REGS',
+            'Congratulations! You have successfully registered.'
+          )
+        )
+        .catch(err => {
+          console.error(err)
+          commit('SET_REGS', 'Registration failed. Please try again later.')
+        })
     },
     async loginUser ({ commit }, data) {
       try {
