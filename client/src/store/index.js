@@ -5,36 +5,22 @@ import axios from 'axios'
 export default createStore({
   plugins: [createPersistedState()],
   state: {
-    user: null,
-    registration: null
+    user: {},
+    registration: ''
   },
   mutations: {
     SET_USER: (state, payload) => (state.user = payload),
     SET_REGS: (state, payload) => (state.registration = payload)
   },
   actions: {
-    // async registerUser ({ commit }, data) {
-    //   try {
-    //     await axios.post('http://localhost:3000/api/user/register', data)
-    //     commit('SET_REGS', 'Congratulations! You have successfully registered.')
-    //   } catch (err) {
-    //     console.error(err)
-    //     // commit('SET_REGS', 'Registration failed. Please try again later.')
-    //   }
-    // },
-    registerUser ({ commit }, data) {
-      axios
-        .post('http://localhost:3000/api/user/register', data)
-        .then(() =>
-          commit(
-            'SET_REGS',
-            'Congratulations! You have successfully registered.'
-          )
-        )
-        .catch(err => {
-          console.error(err)
-          commit('SET_REGS', 'Registration failed. Please try again later.')
-        })
+    async registerUser ({ commit }, data) {
+      try {
+        await axios.post('http://localhost:3000/api/user/register', data)
+        commit('SET_REGS', 'Congratulations! You have successfully registered.')
+      } catch (err) {
+        console.error(err)
+        commit('SET_REGS', 'Registration failed!')
+      }
     },
     async loginUser ({ commit }, data) {
       try {
@@ -65,8 +51,5 @@ export default createStore({
     //   }
     // }
   },
-  getters: {
-    getUser: state => state.user,
-    getRegs: state => state.registration
-  }
+  getters: {}
 })
