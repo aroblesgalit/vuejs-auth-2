@@ -6,7 +6,12 @@ module.exports = {
       username: req.body.username,
       password: req.body.password
     })
-      .then(console.log('Registration successful!'))
+      .then(dbUser =>
+        res.json({
+          id: dbUser._id,
+          username: dbUser.username
+        })
+      )
       .catch(err => res.status(401).json(err))
   },
   loginUser: function (req, res) {
